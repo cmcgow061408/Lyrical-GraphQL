@@ -19,12 +19,11 @@ class SongDetail extends Component{
         }
 
         const {song} = this.props.data;
-        console.log(song);
         return (
             <div>
                 <Link to="/">Back</Link>
                 <h3>{song.title}</h3>
-                <LyricList/>
+                <LyricList lyrics={song.lyrics}/>
                 <LyricCreate songId={this.props.params.id}/>
             </div>
         );
