@@ -2,3 +2,4 @@ node_modules
 .DS_STORE
 Lyrical-GraphQL.iml
 .idea
+/client/auth/auth0-variables.js

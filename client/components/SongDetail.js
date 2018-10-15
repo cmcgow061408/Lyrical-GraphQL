@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {graphql} from "react-apollo";
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import query from "../queries/fetchSongDetails";
 import LyricCreate from "./LyricCreate";
 import LyricList from "./LyricList";
@@ -12,7 +12,7 @@ class SongDetail extends Component{
         if(this.props.data.loading){
             return (
                 <div>
-                    <Link to="/">Back</Link>
+                    <Link to="/songs">Back</Link>
                     <h3>LOADING....</h3>
                 </div>
             );
@@ -21,10 +21,10 @@ class SongDetail extends Component{
         const {song} = this.props.data;
         return (
             <div>
-                <Link to="/">Back</Link>
+                <Link to="/songs">Back</Link>
                 <h3>{song.title}</h3>
                 <LyricList lyrics={song.lyrics}/>
-                <LyricCreate songId={this.props.params.id}/>
+                <LyricCreate songId={this.props.match.params.id}/>
             </div>
         );
     }
@@ -33,6 +33,6 @@ class SongDetail extends Component{
 
 
 
-export default graphql(query, {options: (props) => {return {variables: {id: props.params.id}}}})(SongDetail);
+export default graphql(query, {options: (props) => {return {variables: {id: props.match.params.id}}}})(SongDetail);
 
 
