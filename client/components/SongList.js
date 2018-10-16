@@ -3,6 +3,7 @@ import {graphql} from 'react-apollo';
 import {Link} from "react-router-dom";
 import query from "../queries/fetchSongs";
 import gql from "graphql-tag";
+import Navbar from "react-bootstrap/es/Navbar";
 
 
 class SongList extends Component{
@@ -33,6 +34,7 @@ class SongList extends Component{
                <Link to="/songs/new" className="btn-floating btn-normal red right">
                    <i className="material-icons">add</i>
                </Link>
+               <a href="#">Auth0 - React</a>
            </div>
        );
 

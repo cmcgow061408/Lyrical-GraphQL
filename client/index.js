@@ -12,6 +12,7 @@ import SongDetail from './components/SongDetail';
 import AuthApp from './components/AuthApp';
 import Auth from './auth/Auth';
 
+
 const history = createHashHistory();
 
 const client = new ApolloClient({
@@ -32,10 +33,13 @@ const Root = () => {
           <div className="container">
               <Router history={history}>
                   <Switch>
-                      <Route exact path="/songs" component={SongList}/>
+                      <Route exact path="/songs" render={(props) => {
+                          handleAuthentication(props);
+                          return <SongList {...props} />
+                      }}/>
                       <Route exact path="/songs/new" component={SongCreate}/>
                       <Route exact path="/songs/:id" component={SongDetail}/>
-                      <Route exact path="/" render={(props) => <AuthApp auth={auth} {...props} />} />
+                      <Route path="/" render={(props) => <AuthApp auth={auth} {...props} />} />
                   </Switch>
               </Router>
           </div>

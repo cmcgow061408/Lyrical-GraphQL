@@ -1,5 +1,8 @@
 import auth0js from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
+import createHashHistory from 'history/createHashHistory';
+
+const history = createHashHistory();
 
 export default class Auth {
     constructor() {
@@ -41,7 +44,7 @@ export default class Auth {
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
         // navigate to the home route
-        history.replace('/home');
+        history.replace('/songs');
     }
 
     logout() {
@@ -50,7 +53,7 @@ export default class Auth {
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
         // navigate to the home route
-        history.replace('/home');
+        history.push('/');
     }
 
     isAuthenticated() {
